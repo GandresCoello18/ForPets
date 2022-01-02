@@ -1,5 +1,5 @@
 import React from "react";
-// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import {COLOR_PRIMARY, COLOR_SECONDARY} from '../utils/paleta';
 import { SafeAreaView, View, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 const {height, width} = Dimensions.get('window');
@@ -13,19 +13,14 @@ export const WelcomeScreen = () => {
             </View>
 
             <View style={styles.description}>
-                <View style={styles.ovalado}></View>
+                <View style={styles.ovalado} />
 
                 <Text style={{ textAlign: "center", fontSize: 30, fontWeight: '500' }}>Take Care Of {'\n'}Your Pet</Text>
             
                 <Text style={styles.meta}>Make your bonding relationship between <Text style={{color: COLOR_PRIMARY, fontWeight: 'bold'}}>Pets & humans</Text></Text>
             
                 <TouchableOpacity style={styles.btnStar}>
-                    <View style={styles.circleIcon}>
-                        <Text style={{padding: 20}}>
-                            {/*<MaterialIcons name='arrow-forward-ios' />*/}
-                            rr
-                        </Text>
-                    </View>
+                    <AntDesign name='right' style={styles.circleIcon} />
                     <Text style={styles.textBtn}>Get Started</Text>
                 </TouchableOpacity>
             </View>
@@ -40,14 +35,14 @@ const styles = StyleSheet.create({
         backgroundColor: COLOR_PRIMARY
     },
     ovalado: {
-        width: width - 210,
+        width: width -220,
         height: 150,
         backgroundColor: '#fff',
         borderRadius: 200,
         position: 'absolute',
         top: -70,
         transform: [
-            {scaleX: 2}
+            {scaleX: 3}
         ]
     },
     textBtn: {
@@ -61,9 +56,10 @@ const styles = StyleSheet.create({
     circleIcon: {
         backgroundColor: '#fff',
         borderRadius: 50,
-        height: 50,
         margin: 10,
         position: 'relative',
+        fontSize: 20,
+        padding: 20,
         left: -40
     },
     btnStar: {

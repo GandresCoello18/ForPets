@@ -3,7 +3,7 @@
  */
 
 import {AppRegistry} from 'react-native';
-import { WelcomeScreen } from './src/screens/welcome';
+import { ScreenHome } from './src/screens/home';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => WelcomeScreen);
+AppRegistry.registerComponent(appName, () => ScreenHome);
