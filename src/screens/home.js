@@ -1,5 +1,6 @@
 import React from 'react';
 import {COLOR_SECONDARY} from '../utils/paleta';
+import {CardVeterinary} from '../components/cardVeterinary';
 import {CardAnuncio} from '../components/cardAnuncio';
 import {CicleCategory} from '../components/circleCategori';
 import { Text, SafeAreaView, ScrollView, View, FlatList, TouchableOpacity, Image, StyleSheet } from 'react-native';
@@ -54,7 +55,7 @@ export const ScreenHome = () => {
                 </View>
 
                 <View>
-                    <View style={styles.sectionHeadCategoria}>
+                    <View style={styles.sectionHead}>
                         <Text style={styles.titleCategori}>Category</Text>
                         <Text style={{color: COLOR_SECONDARY}}>Sell all</Text>
                     </View>
@@ -68,6 +69,16 @@ export const ScreenHome = () => {
                             </TouchableOpacity>
                         )}
                     />
+                </View>
+
+                <View style={{marginTop: 20}}>
+                    <View style={styles.sectionHead}>
+                        <Text style={styles.titleCategori}>Nearby Veterinary</Text>
+                        <Text style={{color: COLOR_SECONDARY}}>Sell all</Text>
+                    </View>
+                    <View style={{alignItems: 'center'}}>
+                        <CardVeterinary />
+                    </View>
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -89,7 +100,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold'
     },
-    sectionHeadCategoria: {
+    sectionHead: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 40,
