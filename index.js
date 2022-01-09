@@ -1,9 +1,18 @@
 /**
  * @format
  */
-
+import React from 'react';
 import {AppRegistry} from 'react-native';
-import { ScreenHome } from './src/screens/home';
+import {Navigation} from './src/navigation';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => ScreenHome);
+const Main = () => {
+    return (
+        <SafeAreaProvider>
+            <Navigation />
+        </SafeAreaProvider>
+    )
+}
+
+AppRegistry.registerComponent(appName, () => Main);

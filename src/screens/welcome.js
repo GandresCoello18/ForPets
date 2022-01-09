@@ -1,30 +1,32 @@
 import React from "react";
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {COLOR_PRIMARY, COLOR_SECONDARY} from '../utils/paleta';
-import { SafeAreaView, View, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
+import {View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Dimensions } from "react-native";
 const {height, width} = Dimensions.get('window');
 
-export const WelcomeScreen = () => {
+export const WelcomeScreen = ({navigation}) => {
     return (
         <SafeAreaView style={styles.main}>
-            <View style={styles.head}>
-                <Text style={styles.title}>Homey {'\n'}Pey</Text>
-                <Image style={styles.img} source={require('../assest/img/cat.png')} />
-            </View>
+            <ScrollView>
+                <View style={styles.head}>
+                    <Text style={styles.title}>Homey {'\n'}Pet</Text>
+                    <Image style={styles.img} source={require('../assest/img/cat.png')} />
+                </View>
 
-            <View style={styles.description}>
-                <View style={styles.ovalado} />
+                <View style={styles.description}>
+                    <View style={styles.ovalado} />
 
-                <Text style={{ textAlign: "center", fontSize: 30, fontWeight: '500' }}>Take Care Of {'\n'}Your Pet</Text>
-            
-                <Text style={styles.meta}>Make your bonding relationship between <Text style={{color: COLOR_PRIMARY, fontWeight: 'bold'}}>Pets & humans</Text></Text>
-            
-                <TouchableOpacity style={styles.btnStar}>
-                    <AntDesign name='right' style={styles.circleIcon} />
-                    <Text style={styles.textBtn}>Get Started</Text>
-                </TouchableOpacity>
-            </View>
-
+                    <Text style={{ textAlign: "center", fontSize: 30, fontWeight: '500' }}>Take Care Of {'\n'}Your Pet</Text>
+                
+                    <Text style={styles.meta}>Make your bonding relationship between <Text style={{color: COLOR_PRIMARY, fontWeight: 'bold'}}>Pets & humans</Text></Text>
+                
+                    <TouchableOpacity style={styles.btnStar} onPress={() => navigation.navigate('home')}>
+                        <AntDesign name='right' style={styles.circleIcon} />
+                        <Text style={styles.textBtn}>Get Started</Text>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
         </SafeAreaView>
     )
 }
