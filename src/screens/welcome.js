@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext} from "react";
+import {UserContext} from '../context/user';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {COLOR_PRIMARY, COLOR_SECONDARY} from '../utils/paleta';
@@ -6,6 +7,8 @@ import {View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Dimensions 
 const {height, width} = Dimensions.get('window');
 
 export const WelcomeScreen = ({navigation}) => {
+    const { me } = useContext(UserContext);
+
     return (
         <SafeAreaView style={styles.main}>
             <ScrollView>
@@ -21,7 +24,7 @@ export const WelcomeScreen = ({navigation}) => {
                 
                     <Text style={styles.meta}>Make your bonding relationship between <Text style={{color: COLOR_PRIMARY, fontWeight: 'bold'}}>Pets & humans</Text></Text>
                 
-                    <TouchableOpacity style={styles.btnStar} onPress={() => navigation.navigate('home')}>
+                    <TouchableOpacity style={styles.btnStar} onPress={() => me ? navigation.navigate('Root') : navigation.navigate('Login')}>
                         <AntDesign name='right' style={styles.circleIcon} />
                         <Text style={styles.textBtn}>Get Started</Text>
                     </TouchableOpacity>

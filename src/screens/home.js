@@ -41,7 +41,7 @@ const dataCategory = [
 export const ScreenHome = () => {
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.head}>
                     <View>
                         <Text style={styles.name}>Hi Andres Coello</Text>
