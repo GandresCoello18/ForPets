@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {UserContext} from '../context/user';
 import {COLOR_SECONDARY} from '../utils/paleta';
 import {CardVeterinary} from '../components/cardVeterinary';
 import {CardAnuncio} from '../components/cardAnuncio';
@@ -39,12 +40,13 @@ const dataCategory = [
 ]
 
 export const ScreenHome = () => {
+    const { me } = useContext(UserContext);
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.head}>
                     <View>
-                        <Text style={styles.name}>Hi Andres Coello</Text>
+                        <Text style={styles.name}>Hi {me.name}</Text>
                         <Text style={{ fontSize: 17, color: COLOR_SECONDARY}}>Good Morning!</Text>
                     </View>
                     <Image style={styles.avatar} source={{uri: 'https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?b=1&k=20&m=1300972574&s=170667a&w=0&h=2nBGC7tr0kWIU8zRQ3dMg-C5JLo9H2sNUuDjQ5mlYfo='}} />

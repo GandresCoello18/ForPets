@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {COLOR_PRIMARY} from '../utils/paleta';
+import {UserContext} from '../context/user';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { Text, View, Image, TouchableOpacity, SafeAreaView, StyleSheet, StatusBar } from 'react-native';
 
 export const Profile = ({navigation}) => {
+    const { me, setMe } = useContext(UserContext);
+
+    const closeSesion = async () => {
+        await GoogleSignin.signOut();
+        await AsyncStorage.removeItem('sesion');
+        setMe(undefined);
+    }
+
     return (
         <SafeAreaView style={styles.screen}>
             <StatusBar backgroundColor={COLOR_PRIMARY} />
@@ -17,11 +28,11 @@ export const Profile = ({navigation}) => {
             </View>
 
             <View style={{marginTop: 30, alignItems: 'center'}}>
-                <Image style={styles.avatar} source={{uri: 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}} />
-                <Text style={styles.userName}>Andres Coello Goyes</Text>
-                <Text>Goyeselcoca@gmail.com</Text>
+                <Image style={styles.avatar} source={{uri: me.photo || 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}} />
+                <Text style={styles.userName}>{me.name}</Text>
+                <Text>{me.email}</Text>
 
-                <TouchableOpacity style={styles.btn}>
+                <TouchableOpacity style={styles.btn} onPress={closeSesion}>
                     <Text style={styles.textBtn}>Cerrar Sesión</Text>
                 </TouchableOpacity>
             </View>
